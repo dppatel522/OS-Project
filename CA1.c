@@ -29,3 +29,48 @@ void main()
    //sorting burst time in ascending order using selection sort
 
    for(i=0;i<n;i++)
+        {
+
+       pos=i;
+
+       for(j=i+1;j<n;j++)
+
+       {
+
+           if(bt[j]<bt[pos])
+
+               pos=j;
+
+       }  
+
+       temp=bt[i];
+
+       bt[i]=bt[pos];
+
+       bt[pos]=temp;  
+
+       temp=p[i];
+
+       p[i]=p[pos];
+
+       p[pos]=temp;
+
+   }  
+
+   wt[0]=0; //waiting time for first process will be zero  
+
+   //calculate waiting time
+
+   for(i=1;i<n;i++)
+
+   {
+
+       wt[i]=0;
+
+       for(j=0;j<i;j++)
+
+           wt[i]+=bt[j];  
+
+       total+=wt[i];
+
+   }  
